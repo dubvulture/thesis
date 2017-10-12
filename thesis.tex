@@ -1,0 +1,72 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[italian]{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[parfill]{parskip}
+
+\usepackage{booktabs}
+\usepackage{textcomp}
+\usepackage{graphics}
+\usepackage{float}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{cite}
+\usepackage{calc}
+\usepackage{enumitem}
+%\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{pdfpages}
+\usepackage{footnote}
+\usepackage[bottom]{footmisc}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{array}
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{wrapfig}
+\graphicspath{{./images/}}
+
+\captionsetup{compatibility=false}
+
+\algnewcommand{\LineComment}[1]{\State{\(\triangleright\) #1}}
+\algrenewcommand\Return{\State{\algorithmicreturn{} }}
+\MakeRobust{\Call}
+
+
+\begin{document}
+
+
+\title{Titolo}
+\author{Manuel Rota}
+
+\begin{titlepage}
+	\input{frontispiece.tex}
+\end{titlepage}
+
+\begin{abstract}
+	Il rilevamento del testo in scene reali è un problema specifico della Computer Vision che negli anni è stato sempre oggetto di studi data la sua grande importanza, seppur mai completamente risolto al di fuori di applicazioni specifiche in condizioni controllate.
+	In questa tesi analizziamo i diversi dataset a nostra disposizione per affrontare questo problema, introducendo brevemente anche le reti neurali con particolare attenzione alla loro utilizzo nell'ambito dell'object detection.
+	Infine presentiamo vari dei nostri approcci sviluppati basati sulle \textit{Fully Convolutional Networks} confrontandoci con metodi concorrenti ed ottenendo risultati discreti ma al di sotto degli standard odierni, seppur promettenti e che in futuro potranno certamente migliorare applicando le novità recenti susseguitesi nello stato dell'arte.
+\end{abstract}
+
+
+\tableofcontents
+
+
+\input{chapters/1_introduzione.tex}
+\input{chapters/2_dataset_e_competizioni.tex}
+\input{chapters/3_reti_neurali.tex}
+\input{chapters/4_esperimenti.tex}
+\input{chapters/5_conclusione_e_sviluppi_futuri.tex}
+
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+
+\end{document}

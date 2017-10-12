@@ -1,0 +1,29 @@
+\chapter{Conclusione e sviluppi futuri}
+
+Questa tesi ha affrontato il problema della localizzazione del testo in immagini digitali con tecniche di \textit{deep learning}.\par
+Come primo passo abbiamo presentato i dataset a nostra disposizione e i metodi di valutazione al fine di analizzare su quanto avremmo dovuto operare e quali obiettivi raggiungere. In seguito abbiamo descritto brevemente le reti neurali e la loro storia col fine di presentare lo strumento principale adottato in questa tesi per l'implementazone, descritta nell'ultima parte, di un nostro metodo per la \textbf{text localization}.\par
+
+
+\section{Risultati}
+L'architettura delle Fully Convolutional Networks è stata cruciale per lo sviluppo del nostro metodo e ci ha permesso di ottenere i risultati aspettati nonostante i dati di partenza scarsi o poco precisi, ma soprattutto differenti da quelli per cui è stata ideata inizialmente.\par 
+Questa ha anche mostrato le sue limitazioni sulla precisione della granularità della segmentazione che ci ha obbligato a sviluppare approcci alternativi per superare la difficoltà nel separare parole distinte.\par
+Nonostante questi limiti, il modello architetturale ci ha permesso di compiere con relativa semplicità la fase di localizzazione del testo classificandosi alla pari con metodi concorrenti più sofisticati sviluppati nel periodo in qui questa rete neurale è stata introdotta.
+
+
+\section{Sviluppi futuri}
+I risultati ottenuti però al contempo deludono rispetto ai numeri attualmente raggiunti dallo stato dell'arte. Ciò è da imputare principalmente al fatto che gli strumenti da noi utilizzati, seppur recenti, risultano ormai superati da nuovi sviluppi nella ricerca che continua a fare grandi passi.\par 
+Andando a toccare su più frangenti i metodi da noi illustrati, di seguito sono descritti i vari miglioramenti che possono essere adottati, in ordine di complessità.
+
+\subsubsection{Modifica Groundtruth}
+Questo è un obiettivo che in parte abbiamo già sviluppato coi nostri tentativi di utilizzare una nuova classe da predire, ma le idee potrebbero essere molteplici. Fra queste possiamo citare un approccio visto nella già citata \textbf{WordFence}~\cite{polzounov2017wordfence}, ovvero utilizzare una maschera dei pesi per la loss pixel per pixel che faccia pesare di meno eventuali predizioni negative agli estremi delle bounding box. 
+
+\subsubsection{Deconvoluzione}
+Come già osservato nella sezione~\ref{sec:FCN} la fase di deconvoluzione è divisa in due passi per ritornare alla dimensione originale dell'input, in cui vengono addizionati due dei layer precedenti di pooling. L'idea sarebbe dunque quella di estendere questo procedimento tante volte quante le fasi di pooling in maniera da costruire una fase di deconvoluzione ``specchiata'' rispetto a quella di convoluzione.\par
+
+\subsubsection{Classificatore}
+Nella sezione~\ref{subsec:case_studies} abbiamo descritto in breve alcuni degli ultimi risultati nella modellazione di reti neurali convoluzionali, fra cui ricade anche la VGG utilizzata alla base delle Fully Convolutional Networks. Come è possibile notare, seppure questa sia il classificatore di riferimento, nulla impedirebbe di rimpiazzarla con uno dei modelli a lei superiori nel task di object detection, portando di conseguenza teoricamente a risultati più precisi. 
+
+\subsubsection{Estrazione Bounding Box}
+Infine come tentativo ultimo, anche se non meno importante, rimane quello di sviluppare un nuovo metodo più sofisticato rispetto a quello da noi utilizzato (che ricordiamo essere semplici operazioni morfologiche e di rilevamento di componenti connesse) da mettere in coda alla fase di segmentazione.\par
+L'idea potrebbe essere quella di di utilizzare sempre un approccio orientato al machine learning ma questa volta di natura differente, per esempio un task di regressione delle bounding box come già accennato in precedenza nello stato dell'arte~\cite{he2017deep}.
+

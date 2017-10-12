@@ -1,0 +1,58 @@
+\chapter{Introduzione}
+
+Il rilevamento del testo è stato per molti anni una sfida impegnativa nel campo della Computer Vision, soprattutto qualora questo non si trovasse inquadrato come elemento principale in un'immagine o fosse ubicato in contesti caotici riscontrabili nella vita quotidiana.\par
+Infatti, per molti decenni le uniche implementazioni di tali metodi furono sempre rilegate a compiti molto ristretti e in condizioni prevedibili, come per esempio la localizzazione, estrazione e riconoscimento di parole in documenti stampati o scritti a mano, raggiungendo così risultati sì considerevoli, ma solo all'interno della specifica applicazione.\par
+Scopo di questa tesi, come quello della ricerca in questo campo negli ultimi anni, è dunque il rafforzamento del task di \textbf{text detection} applicato a immagini raffiguranti i più vari contesti di scene reali andando a studiare ed applicare alcuni dei più recenti strumenti a nostra disposizione.\par
+
+\vspace{10pt}
+
+\section{Competizioni}
+Nel corso degli anni, al fine di incentivare la ricerca in questo campo, sono nate molte competizioni riguardanti l'argomento in studio nelle sue più varie sfaccettature.\par
+L'\textbf{International Conference on Document Analysis and Recognition}~\cite{ICDAR} (ICDAR), è una conferenza internazionale la quale dal 1991 a cadenza biennale raggruppa varie di queste competizioni.\par
+Molti di queste sono strutturate perlopiù nei seguenti task individuali:
+\begin{itemize}
+	\item Text Localization: \\
+		Ottenimento di un'area approssimativa occupata dalle zone di testo
+	\item Test Segmentation: \\
+		Segmentazione dei singoli caratteri dallo sfondo
+	\item Word Recognition: \\
+		Raggruppamento dei caratteri in parole e loro trascrizione
+\end{itemize}
+\vspace{4pt}
+La fase di interesse di questa tesi è quella di \textit{Text Localization}.
+
+\section{Stato dell'Arte}
+\label{sec:sota}
+Negli anni molti metodi hanno tentato di approcciarsi a questo problema, adottando solitamente una fase di localizzazione dei singoli caratteri seguita da un loro raggruppamento in parole. Tra i più recenti possiamo citare:
+\begin{itemize}
+	\item
+		\textbf{TextFlow}~\cite{tian2015text} \\
+		Fast Cascade Boosting seguito da una rete di flusso dei costi minimi.
+	\item
+		\textbf{Canny Text Detector}~\cite{cho2016canny} \\
+		 Regioni estremali stabili massimamente (MSER) con AdaBoost per l'eliminazione di falsi positivi.
+\end{itemize}
+
+Recentemente però, con la crescita in popolarità e delle prestazioni delle reti neurali, ed in particolare quelle convoluzionali nel campo dell'object detection, sono nati molti altri metodi anche fra di loro differenti, fra i quali possiamo citare:
+\begin{itemize}
+	\item \textbf{Multi-Oriented Text Detection}~\cite{zhang2016multi} \\
+		Region proposal con Convolutional Neural Networks seguita da metodi ``tradizionali''
+	\item \textbf{WordFence}~\cite{polzounov2017wordfence} \\
+		Separazione delle zone proposte come testo con la predizione dei bordi delle parole
+	\item \textbf{Deep Direct Regression}~\cite{he2017deep} \\
+		Proposta di zone di interesse e regressione delle singole bounding box
+\end{itemize}
+
+
+\section{Struttura della tesi}
+Questa tesi è strutturata nei seguenti capitoli principali:
+\begin{enumerate}
+\setcounter{enumi}{1}
+	\item \textbf{Dataset e Competizioni} \\
+		Questo capitolo descrive i vari dataset pubblici utilizzati, sia per una nostra fase di addestramento che per la valutazione dei nostri metodi, analizzando le tecniche di misurazione di performance utilizzate. 
+	\item \textbf{Reti Neurali} \\
+		Questo capitolo copre in breve la storia e teoria delle reti neurali dalla loro concezione fino ai giorni nostri, per arrivare al loro utilizzo odierno nel campo della Computer Vision per l'object detection.
+	\item \textbf{Esperimenti} \\
+		Questo capitolo illustra i nostri approcci incrementali al problema dela Text Localization con le tecniche di \textit{deep learning} illustrate nel capitolo precedente.
+	\end{enumerate}
+
